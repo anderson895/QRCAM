@@ -62,7 +62,7 @@ export default {
           { deviceId: { exact: cameraId } },
           {
             fps: 10,
-            qrbox: { width: 200, height: 200 } // ✅ Smaller scan box for smaller camera view
+            qrbox: { width: 200, height: 200 } 
           },
           (decodedText) => {
             this.scannedResult = decodedText
