@@ -1,9 +1,9 @@
 <template>
-  <v-container>
-    <h1 class="mb-6 text-h4 font-weight-bold">QR Code Generator & Scanner</h1>
+  <v-container class="pa-4" style="max-width: 600px; margin-left: 0;">
+    <h1 class="mb-4 text-h5 font-weight-bold">QR Code Generator & Scanner</h1>
 
     <!-- QR Code Generator Section -->
-    <v-card class="pa-4 mb-6">
+    <v-card class="pa-3 mb-4" outlined>
       <v-text-field
         v-model="qrText"
         label="Enter text to generate QR"
@@ -11,18 +11,18 @@
         dense
         clearable
       />
-      <v-btn color="primary" @click="generateQRCode">Generate QR Code</v-btn>
+      <v-btn color="primary" @click="generateQRCode" class="mt-2" block>Generate QR Code</v-btn>
 
       <div v-if="qrDataUrl" class="mt-4 text-center">
         <p class="mb-2">Generated QR Code:</p>
-        <img :src="qrDataUrl" alt="QR Code" style="width: 250px; height: 250px;" />
+        <img :src="qrDataUrl" alt="QR Code" style="width: 200px; height: 200px;" />
       </div>
     </v-card>
 
     <!-- QR Code Scanner Section -->
-    <v-card class="pa-4">
-      <p class="mb-4 font-weight-medium">QR Code Scanner</p>
-      <div id="reader" style="width: 100%; max-width: 500px; height: 500px; margin: 0 auto;"></div>
+    <v-card class="pa-3" outlined>
+      <p class="mb-3 font-weight-medium">QR Code Scanner</p>
+      <div id="reader" style="width: 100%; max-width: 300px; height: 300px; margin: 0 auto;"></div>
 
       <div v-if="scannedResult" class="mt-4 text-center">
         <p><strong>Scanned Result:</strong> {{ scannedResult }}</p>
@@ -60,12 +60,15 @@ export default {
 
         html5QrCode.start(
           { deviceId: { exact: cameraId } },
-          { fps: 10, qrbox: { width: 300, height: 300 } },
+          {
+            fps: 10,
+            qrbox: { width: 200, height: 200 } // ✅ Smaller scan box for smaller camera view
+          },
           (decodedText) => {
             this.scannedResult = decodedText
           },
           (errorMessage) => {
-            // Handle errors if needed
+            // You can optionally log scan errors here
           }
         ).catch(err => {
           console.error("Start failed:", err);
