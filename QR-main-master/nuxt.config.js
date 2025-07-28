@@ -27,7 +27,7 @@ export default {
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
-        '~/plugins/html5-qrcode.client.js'
+    '~/plugins/html5-qrcode.client.js'
     ],
 
 
@@ -54,7 +54,7 @@ export default {
         },
         strategies: {
             google: {
-                clientId: '378811634119-0ab9h7a0ncottipm6786o5pid2ecu6md.apps.googleusercontent.com',
+                clientId: '475418159016-o1ofig201uun1uicfd7d7oeu2j3qojqn.apps.googleusercontent.com',
                 scheme: 'oauth2',
                 endpoints: {
                     authorization: "https://accounts.google.com/o/oauth2/auth",
@@ -67,7 +67,7 @@ export default {
                 },
                 responseType: "token id_token",
                 scope: ["openid", "profile", "email"],
-                redirectUri: process.env.REDIRECT_URI || "http://localhost:3000/auth/callback",
+                redirecturi: "http://localhost:3000/auth/callback",
                 codeChallengeMethod: "",
             },
         }
